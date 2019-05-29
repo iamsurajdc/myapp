@@ -1,21 +1,43 @@
+# language: node_js
+# node_js: 
+#   - "8.11.1"
+
+# branches: 
+#   only: 
+#    - "master"
+
+# before_script: 
+#   - "npm install -g "firebase-tools"
+
+# script: 
+#   - "npm run build-prod"
+
+# after_success: 
+#   - "firebase deploy --token $FIREBASE_TOKEN --non-interactive"
+
+# notifications: 
+#   email: 
+#     on_failure: change
+#     on_success: change
+
+
+    sudo: required
+addons:
+  chrome: stable
 language: node_js
-node_js: 
-  - "8.11.1"
-
-branches: 
-  only: 
-   - "master"
-
-before_script: 
-  - "npm install -g "firebase-tools"
-
-script: 
-  - "npm run build-prod"
-
-after_success: 
-  - "firebase deploy --token $FIREBASE_TOKEN --non-interactive"
-
-notifications: 
-  email: 
-    on_failure: change
-    on_success: change
+node_js:
+  - "10.0"
+branches:
+  only:
+    - master
+before_script:
+  - npm install -g @angular/cli
+  - npm install -g "firebase-tools
+script:
+  - npm install
+  - ng build --prod
+deploy:
+  skip_cleanup: true
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
