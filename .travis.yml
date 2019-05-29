@@ -11,7 +11,7 @@ before_install:
   - gem install rake
 before_script:
   - npm install -g @angular/cli
-  - npm install -g "firebase-tools
+  - npm install -g firebase-tools
 script:
   - npm install
   - ng build --prod
